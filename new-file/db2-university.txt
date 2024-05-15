@@ -56,4 +56,16 @@ WHERE departments.name LIKE 'Matematica';
 
 
 7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
+SELECT 
+    student_id,
+    exam_id,
+    COUNT(*) AS attempts_count,
+    MAX(vote) AS max_vote
+FROM 
+    exam_student
+GROUP BY 
+    student_id,
+    exam_id
+HAVING 
+    MAX(vote) >= 18;
 
